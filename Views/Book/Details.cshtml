@@ -1,0 +1,65 @@
+﻿@model BookReview.Books
+
+ 
+
+<h2>Детали о книге</h2>
+
+
+
+<table class="searchResultTable">
+     
+    <tr>
+        <td class="bookThumbnailTd">
+            <img class="bookThumbnail" src="@Model.Picture" /> <br />
+
+            @Html.ActionLink("Edit", "Edit", new { id = Model.OzonBookId })
+        </td>
+
+        <td class="bookDetailsTd">
+            @if (!string.IsNullOrEmpty(Model.Title))
+            { @Html.DisplayFor(modelItem => Model.Title) <br />}
+
+            @if (!string.IsNullOrEmpty(Model.Author))
+            { @Html.DisplayFor(modelItem => Model.Author)<br />}
+
+            @Html.DisplayFor(modelItem => Model.Year)<br />
+
+            @if (!string.IsNullOrEmpty(Model.Publisher))
+            {  @Html.DisplayFor(modelItem => Model.Publisher)<br />}
+
+            @if (!string.IsNullOrEmpty(Model.Series))
+            {@Html.DisplayFor(modelItem => Model.Series)<br />}
+
+            @if (!string.IsNullOrEmpty(Model.Language))
+            {  @Html.DisplayFor(modelItem => Model.Language)<br />}
+
+            @if (!string.IsNullOrEmpty(Model.Page_extent))
+            {   @Html.DisplayFor(modelItem => Model.Page_extent) <span> Страниц</span><br />}
+
+            ISBN: @Html.DisplayFor(modelItem => Model.ISBN) <br />
+
+            Цена: @Html.DisplayFor(modelItem => Model.Price)<br />
+
+            <a href="@Model.Url">Купить</a>
+        </td>
+
+        <td class="bookDescriptionTd">
+            @Html.DisplayFor(modelItem => Model.Description)
+            @if (Model.Description.Length > 900)
+            {
+                <br />
+                <a href="@Model.Url">Подробнее на сайте интернет магазина -></a>
+            }
+        </td>
+    </tr>
+</table>
+
+
+
+
+@Html.Partial("../AddComment/Reply", Model.Comments)
+
+
+
+
+

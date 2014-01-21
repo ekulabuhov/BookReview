@@ -1,0 +1,47 @@
+﻿
+
+/*
+    Custom css. Ream
+    */
+/*GENERAL*/
+
+body {
+background:url(../content/bg.jpg) repeat;}
+ 
+body { padding-top: 50px; }
+/*TABLE*/
+.bookThumbnailTd {
+    text-align:center;
+    width:200px;
+ } 
+
+.searchResultTable { 
+width:1000px;
+}
+
+.searchResultTable tr {
+    height:220px;
+}
+
+    .searchResultTable td {
+    /* border: solid black 1px; */
+}
+
+.bookDescriptionTd {
+    text-align:center;
+    width:550px;
+}
+
+.bookDetailsTd {
+    width:250px;
+}
+
+.bookThumbnail {
+     max-width:130px; height:auto;
+     box-shadow:4px 4px 4px;
+ }
+
+.podrobneeLink {
+font-size:9px;
+color:red;
+}
