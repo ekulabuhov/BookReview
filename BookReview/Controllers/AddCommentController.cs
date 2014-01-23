@@ -7,28 +7,15 @@ using Microsoft.AspNet.Identity;
 using BookReview; 
 using System.Data;
 using System.Data.Entity; 
-using System.Net; 
+using System.Net;
+using BookReview.Models; 
 
 namespace BookReview.Controllers
 {
     public class AddCommentController : Controller
     {
-
-        private BookContext db = new BookContext();
+        private BooksMvcContext db = new BooksMvcContext();
        
-        // GET: /Reply/
-        public ActionResult Index()
-        {
-            var comments = db.Comments.Include(c => c.Books);
-            return View(comments.ToList());
-        }
-
-        // GET: /Reply/Create
-        public ActionResult Reply()
-        { 
-            return View();
-        }
-
         // POST: /Reply/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -36,7 +23,7 @@ namespace BookReview.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Reply(int bukid, string comment)
         { 
-            Comments commento = new Comments();
+            Comment commento = new Comment();
             if (ModelState.IsValid)
             {
                 commento.PostedOn = DateTime.Now;

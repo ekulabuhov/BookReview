@@ -13,7 +13,7 @@ namespace BookReview.Models
 {
     public class BookController : Controller
     {
-        private BookContext db = new BookContext();
+        private BooksMvcContext db = new BooksMvcContext();
 
         // GET: /Book/
         public ActionResult Index()
@@ -70,12 +70,12 @@ namespace BookReview.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Books books = db.Books.Find(id);
-            if (books == null)
+            Book book = db.Books.Find(id);
+            if (book == null)
             {
                 return HttpNotFound();
             }
-            return View(books);
+            return View(book);
         }
 
     
@@ -91,16 +91,16 @@ namespace BookReview.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Year,Title,Description,Price,Author,Url,Picture,Publisher,ISBN,Language,Binding,Page_extent,Barcode,Series,OzonBookId")] Books books)
+        public ActionResult Create([Bind(Include="Id,Year,Title,Description,Price,Author,Url,Picture,Publisher,ISBN,Language,Binding,Page_extent,Barcode,Series,OzonBookId")] Book book)
         {
             if (ModelState.IsValid)
             {
-                db.Books.Add(books);
+                db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(books);
+            return View(book);
         }
 
         // GET: /Book/Edit/5
@@ -110,12 +110,12 @@ namespace BookReview.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Books books = db.Books.Find(id);
-            if (books == null)
+            Book book = db.Books.Find(id);
+            if (book == null)
             {
                 return HttpNotFound();
             }
-            return View(books);
+            return View(book);
         }
 
         // POST: /Book/Edit/5
@@ -123,15 +123,15 @@ namespace BookReview.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Year,Title,Description,Price,Author,Url,Picture,Publisher,ISBN,Language,Binding,Page_extent,Barcode,Series,OzonBookId")] Books books)
+        public ActionResult Edit([Bind(Include="Id,Year,Title,Description,Price,Author,Url,Picture,Publisher,ISBN,Language,Binding,Page_extent,Barcode,Series,OzonBookId")] Book book)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(books).State = EntityState.Modified;
+                db.Entry(book).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(books);
+            return View(book);
         }
 
         // GET: /Book/Delete/5
@@ -141,12 +141,12 @@ namespace BookReview.Models
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Books books = db.Books.Find(id);
-            if (books == null)
+            Book book = db.Books.Find(id);
+            if (book == null)
             {
                 return HttpNotFound();
             }
-            return View(books);
+            return View(book);
         }
 
         // POST: /Book/Delete/5
@@ -154,8 +154,8 @@ namespace BookReview.Models
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Books books = db.Books.Find(id);
-            db.Books.Remove(books);
+            Book book = db.Books.Find(id);
+            db.Books.Remove(book);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

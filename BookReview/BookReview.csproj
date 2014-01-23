@@ -160,56 +160,32 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="AspNetRoles.cs">
-      <DependentUpon>BooksComments.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUserClaims.cs">
-      <DependentUpon>BooksComments.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUserLogins.cs">
-      <DependentUpon>BooksComments.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUsers.cs">
-      <DependentUpon>BooksComments.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Books.cs">
-      <DependentUpon>BooksComments.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BooksComments.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BooksComments.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BooksComments.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BooksComments.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BooksComments.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BooksComments.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Comments.cs">
-      <DependentUpon>BooksComments.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddCommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="C__MigrationHistory.cs">
-      <DependentUpon>BooksComments.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Models\AspNetRole.cs" />
+    <Compile Include="Models\AspNetUser.cs" />
+    <Compile Include="Models\AspNetUserClaim.cs" />
+    <Compile Include="Models\AspNetUserLogin.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BooksMvcContext.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Mapping\AspNetRoleMap.cs" />
+    <Compile Include="Models\Mapping\AspNetUserClaimMap.cs" />
+    <Compile Include="Models\Mapping\AspNetUserLoginMap.cs" />
+    <Compile Include="Models\Mapping\AspNetUserMap.cs" />
+    <Compile Include="Models\Mapping\BookMap.cs" />
+    <Compile Include="Models\Mapping\CommentMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BooksComments.edmx.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -218,23 +194,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="BooksComments.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BooksComments.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="BooksComments.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BooksComments.edmx</DependentUpon>
-      <LastGenOutput>BooksComments.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="BooksComments.edmx.diagram">
-      <DependentUpon>BooksComments.edmx</DependentUpon>
-    </Content>
-    <Content Include="BooksComments.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BooksComments.edmx</DependentUpon>
-      <LastGenOutput>BooksComments.cs</LastGenOutput>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
