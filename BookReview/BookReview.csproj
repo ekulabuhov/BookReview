@@ -14,7 +14,7 @@
     <RootNamespace>BookReview</RootNamespace>
     <AssemblyName>BookReview</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
+    <MvcBuildViews>true</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -238,7 +238,6 @@
     <Content Include="Views\Book\Details.cshtml" />
     <Content Include="Views\Book\Edit.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
-    <Content Include="Views\AddComment\Index.cshtml" />
     <Content Include="Views\AddComment\Reply.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -268,7 +267,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8138</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

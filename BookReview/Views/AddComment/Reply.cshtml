@@ -1,4 +1,4 @@
-﻿@model ICollection<BookReview.Comments>
+﻿@model ICollection<BookReview.Models.Comment>
 
 
 <h4>Отзывы</h4>
@@ -13,7 +13,7 @@ foreach (var comment in Model)
         <div class="panel-heading">
             <h3 class="panel-title">
 
-                @Html.DisplayFor(x => comment.AspNetUsers.FullName) напейсал:
+                @Html.DisplayFor(x => comment.AspNetUser.FullName) напейсал:
                 @Html.DisplayFor(modelitem => comment.PostedOn)
 
             </h3>
