@@ -18,8 +18,7 @@ namespace BookReview.Controllers
        
         // POST: /Reply/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //hello moto
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598. 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Reply(int bukid, string comment)
@@ -36,9 +35,7 @@ namespace BookReview.Controllers
                 db.Comments.Add(commento); 
                 db.SaveChanges();
                 // return RedirectToAction("Details", "Book", new { id = bukid });  @{Html.RenderAction("Reply", "AddComment", new { bukid = Model.Id });} 
-                 
-            }
-
+             } 
             return RedirectToAction("Details", "Book", new { id = bukid });
         }
 

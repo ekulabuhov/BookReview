@@ -1,13 +1,13 @@
 ﻿@model BookReview.Models.Book
 
- 
+
 
 <h2>Детали о книге</h2>
 
 
 
 <table class="searchResultTable">
-     
+
     <tr>
         <td class="bookThumbnailTd">
             <img class="bookThumbnail" src="@Model.Picture" /> <br />
@@ -57,7 +57,7 @@
 
 
 
-@Html.Partial("../AddComment/Reply", Model.Comments)
+@Html.Partial("../AddComment/Reply", Model)
 
 
 
