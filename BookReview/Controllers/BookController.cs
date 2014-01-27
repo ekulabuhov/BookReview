@@ -7,7 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BookReview;
-using System.Xml.Linq; 
+using System.Xml.Linq;
+using Microsoft.AspNet.Identity;
 
 namespace BookReview.Models
 {
@@ -18,31 +19,31 @@ namespace BookReview.Models
         // GET: /Book/
         public ActionResult Index()
         {
-            /*
-            XDocument xdoc = XDocument.Load("bx.xml");
-            List<Books> bookCollection = (from offer in xdoc.Descendants("offer")
-                                          select new Books
-                                          {
-                                              Price = (decimal?)offer.Element("price"),
-                                              Author = (string)offer.Element("author"),
-                                              Title = (string)offer.Element("name"),
-                                              Year = (int?)offer.Element("year"),
-                                              Description = (string)offer.Element("description"),
-                                              OzonBookId = (int?)offer.Attribute("id"),
-                                              Url = (string)offer.Element("url"),
-                                              Picture = (string)offer.Element("picture"),
-                                              Publisher = (string)offer.Element("publisher"),
-                                              ISBN = (string)offer.Element("ISBN"),
-                                              Language = (string)offer.Element("language"),
-                                              Binding = (string)offer.Element("binding"),
-                                              Page_extent = (string)offer.Element("page_extent"),
-                                              Barcode = (string)offer.Element("barcode"),
-                                              Series = (string)offer.Element("series"),
-                                          }).ToList();
-            db.Books.AddRange(bookCollection);
-            db.SaveChanges();
-            */
-
+            if (db.Books.Count() < 1)
+            {
+                XDocument xdoc = XDocument.Load("../../bx1.xml");
+                List<Book> bookCollection = (from offer in xdoc.Descendants("offer")
+                                             select new Book
+                                             {
+                                                 Price = (decimal?)offer.Element("price"),
+                                                 Author = (string)offer.Element("author"),
+                                                 Title = (string)offer.Element("name"),
+                                                 Year = (int?)offer.Element("year"),
+                                                 Description = (string)offer.Element("description"),
+                                                 OzonBookId = (int?)offer.Attribute("id"),
+                                                 Url = (string)offer.Element("url"),
+                                                 Picture = (string)offer.Element("picture"),
+                                                 Publisher = (string)offer.Element("publisher"),
+                                                 ISBN = (string)offer.Element("ISBN"),
+                                                 Language = (string)offer.Element("language"),
+                                                 Binding = (string)offer.Element("binding"),
+                                                 Page_extent = (string)offer.Element("page_extent"),
+                                                 Barcode = (string)offer.Element("barcode"),
+                                                 Series = (string)offer.Element("series"),
+                                             }).ToList();
+                db.Books.AddRange(bookCollection);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index", "Home");
         }
 
@@ -160,6 +161,8 @@ namespace BookReview.Models
             return RedirectToAction("Index");
         }
 
+         
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

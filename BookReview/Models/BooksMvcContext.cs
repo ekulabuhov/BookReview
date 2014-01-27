@@ -1,6 +1,5 @@
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using BookReview.Models.Mapping;
+using System.Data.Entity.Infrastructure; 
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BookReview.Models
@@ -13,15 +12,23 @@ namespace BookReview.Models
         public DbSet<AspNetUser> AspNetUsers { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<BookAspNetUsers> BookAspNetUsers { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new AspNetRoleMap());
-            modelBuilder.Configurations.Add(new AspNetUserClaimMap());
-            modelBuilder.Configurations.Add(new AspNetUserLoginMap());
-            modelBuilder.Configurations.Add(new AspNetUserMap());
-            modelBuilder.Configurations.Add(new BookMap());
-            modelBuilder.Configurations.Add(new CommentMap());
+
+            // Relationships
+            modelBuilder.Entity<AspNetRole>()
+                .HasMany(t => t.AspNetUsers)
+                .WithMany(t => t.AspNetRoles)
+                .Map(m =>
+                {
+                    m.ToTable("AspNetUserRoles");
+                    m.MapLeftKey("RoleId");
+                    m.MapRightKey("UserId");
+                });
+
+
         }
     }
 }

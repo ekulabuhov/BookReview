@@ -26,9 +26,7 @@ namespace BookReview.Controllers
             Comment commento = new Comment();
             if (ModelState.IsValid)
             {
-                commento.PostedOn = DateTime.Now;
-                //gotta use dem migrations to remove that field
-                commento.UserId = User.Identity.GetUserId();
+                commento.PostedOn = DateTime.Now; 
                 commento.BooksId = bukid;
                 commento.Text = comment;
                 commento.AspNetUsersId = User.Identity.GetUserId();

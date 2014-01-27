@@ -24,6 +24,8 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Request.IsAuthenticated) {
+                    <li>@Html.ActionLink("Профиль", "Index", "Profile")</li> }
                 </ul>
                 @Html.Partial("_LoginPartial")
                 @using (Html.BeginForm("Index", "Book", FormMethod.Post, new { @class = "navbar-form navbar-right" }))

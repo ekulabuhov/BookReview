@@ -10,6 +10,7 @@ namespace BookReview.Models
             this.AspNetUserClaims = new List<AspNetUserClaim>();
             this.AspNetUserLogins = new List<AspNetUserLogin>();
             this.AspNetRoles = new List<AspNetRole>();
+            this.BookAspNetUsers = new List<BookAspNetUsers>();
         }
 
         public string Id { get; set; }
@@ -22,5 +23,6 @@ namespace BookReview.Models
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<BookAspNetUsers> BookAspNetUsers { get; set; }
     }
 }

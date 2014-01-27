@@ -1,0 +1,42 @@
+﻿@model ICollection<BookReview.Models.Book>
+ 
+<h3>Любимые книги</h3>
+<table class="searchResultTable">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="bookThumbnailTd">
+                <img class="bookThumbnail" src="@item.Picture" /> <br />
+
+                @Html.ActionLink("Подробней", "Details", "Book", new { id = item.Id }, null)
+                @Html.ActionLink("Удалить", "RemoveFromFav", "Profile", new { id = item.Id }, null)
+            </td>
+            <td class="bookDetailsTd">
+                @if (!string.IsNullOrEmpty(item.Title))
+                { @Html.DisplayFor(modelItem => item.Title) <br />}
+                @if (!string.IsNullOrEmpty(item.Author))
+                { @Html.DisplayFor(modelItem => item.Author)<br />}
+
+                @Html.DisplayFor(modelItem => item.Year)<br />
+                @if (!string.IsNullOrEmpty(item.Publisher))
+                {  @Html.DisplayFor(modelItem => item.Publisher)<br />}
+
+                @if (!string.IsNullOrEmpty(item.Series))
+                {@Html.DisplayFor(modelItem => item.Series)<br />}
+
+                @if (!string.IsNullOrEmpty(item.Language))
+                {  @Html.DisplayFor(modelItem => item.Language)<br />}
+
+                @if (!string.IsNullOrEmpty(item.Page_extent))
+                {   @Html.DisplayFor(modelItem => item.Page_extent) <span> Страниц</span><br />}
+
+                ISBN: @Html.DisplayFor(modelItem => item.ISBN) <br />
+
+                Цена: @Html.DisplayFor(modelItem => item.Price)<br />
+                <a href="@item.Url">Купить</a>
+            </td>
+
+           
+        </tr>
+    }
+</table>

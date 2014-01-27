@@ -13,6 +13,10 @@
             <img class="bookThumbnail" src="@Model.Picture" /> <br />
 
             @Html.ActionLink("Edit", "Edit", new { id = Model.OzonBookId })
+@if (Request.IsAuthenticated)
+{ 
+    @Html.ActionLink("Добавить", "AddToFavs", "Profile", new { id = Model.Id }, null);
+}
         </td>
 
         <td class="bookDetailsTd">

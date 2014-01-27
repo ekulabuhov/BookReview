@@ -16,7 +16,7 @@
             <td class="bookThumbnailTd">
                 <img class="bookThumbnail" src="@item.Picture" /> <br />
                  
-                @Html.ActionLink("Details", "Details", new { id = item.Id })  
+                @Html.ActionLink("Подробней", "Details", new { id = item.Id })  
             </td>
             <td class="bookDetailsTd">
                 @if (!string.IsNullOrEmpty(item.Title))

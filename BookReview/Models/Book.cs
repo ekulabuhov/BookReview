@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookReview.Models
 {
@@ -8,6 +9,8 @@ namespace BookReview.Models
         public Book()
         {
             this.Comments = new List<Comment>();
+            this.BookAspNetUsers = new List<BookAspNetUsers>();
+
         }
 
         public int Id { get; set; }
@@ -27,5 +30,8 @@ namespace BookReview.Models
         public string Series { get; set; }
         public Nullable<int> OzonBookId { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<BookAspNetUsers> BookAspNetUsers { get; set; } 
+
     }
+
 }
