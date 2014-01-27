@@ -8,8 +8,9 @@ namespace BookReview.Migrations
     internal sealed class Configuration : DbMigrationsConfiguration<BookReview.Models.BooksMvcContext>
     {
         public Configuration()
-        {
-            AutomaticMigrationsEnabled = false;
+        { 
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(BookReview.Models.BooksMvcContext context)
