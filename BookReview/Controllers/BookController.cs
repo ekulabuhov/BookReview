@@ -76,6 +76,9 @@ namespace BookReview.Models
             {
                 return HttpNotFound();
             }
+            string usrIdent = User.Identity.GetUserId();
+            bool hazABook = db.BookAspNetUsers.Any(rec => rec.BookId == id && rec.AspNetUserId == usrIdent);
+            ViewBag.AddToFavz = hazABook.ToString();
             return View(book);
         }
 
