@@ -1,6 +1,8 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure; 
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.Migrations; 
+using BookReview.Migrations;
 
 namespace BookReview.Models
 {
@@ -16,6 +18,7 @@ namespace BookReview.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BooksMvcContext, Configuration>());
 
             // Relationships
             modelBuilder.Entity<AspNetRole>()
