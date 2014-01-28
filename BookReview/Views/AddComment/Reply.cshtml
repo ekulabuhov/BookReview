@@ -11,11 +11,11 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">
-
-                    @Html.DisplayFor(modelitem => comment.AspNetUser.FullName) напейсал:
-                    @Html.DisplayFor(modelitem => comment.PostedOn)
-
+                <h3 class="panel-title"> 
+                     
+                     @Html.ActionLink(comment.AspNetUser.FullName, "Index", "Profile", new {userId = comment.AspNetUser_Id}) напейсал: 
+                     @Html.DisplayFor(modelitem => comment.PostedOn)
+                 
                 </h3>
             </div>
             <div class="panel-body">

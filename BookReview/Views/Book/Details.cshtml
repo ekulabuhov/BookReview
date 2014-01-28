@@ -15,7 +15,7 @@
             @Html.ActionLink("Edit", "Edit", new { id = Model.OzonBookId })
 @if (Request.IsAuthenticated)
 {
-    if (ViewBag.AddToFavz == "False") 
+    if (ViewBag.AddToFavz == false) 
     { 
     @Html.ActionLink("Добавить", "AddToFavs", "Profile", new { id = Model.Id }, null);
     }

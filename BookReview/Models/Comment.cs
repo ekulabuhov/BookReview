@@ -8,8 +8,8 @@ namespace BookReview.Models
         public int Id { get; set; }
         public string Text { get; set; }
         public System.DateTime PostedOn { get; set; }
-        public int BooksId { get; set; }
-        public string AspNetUsersId { get; set; }
+        public int Book_Id { get; set; }
+        public string AspNetUser_Id { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Book Book { get; set; }

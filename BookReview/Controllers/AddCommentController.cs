@@ -27,9 +27,9 @@ namespace BookReview.Controllers
             if (ModelState.IsValid)
             {
                 commento.PostedOn = DateTime.Now; 
-                commento.BooksId = bukid;
+                commento.Book_Id = bukid;
                 commento.Text = comment;
-                commento.AspNetUsersId = User.Identity.GetUserId();
+                commento.AspNetUser_Id = User.Identity.GetUserId();
                 db.Comments.Add(commento); 
                 db.SaveChanges();
                 // return RedirectToAction("Details", "Book", new { id = bukid });  @{Html.RenderAction("Reply", "AddComment", new { bukid = Model.Id });} 

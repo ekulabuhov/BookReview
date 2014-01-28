@@ -22,6 +22,14 @@ namespace BookReview.Controllers
         }
 
 
+        public ActionResult Index(string userId)
+        {
+            var result = db.AspNetUsers.Find(userId);
+            return View(result);
+        }
+
+
+
         public ActionResult _FavBooks()
         {
             var queryUserId = User.Identity.GetUserId();
@@ -29,7 +37,7 @@ namespace BookReview.Controllers
                       from c in s.BookAspNetUsers
                       where c.AspNetUserId == queryUserId
                       select s).ToList(); 
-            return View(huj);
+            return PartialView(huj);
         }
 
 
