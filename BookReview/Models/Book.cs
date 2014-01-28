@@ -8,12 +8,12 @@ namespace BookReview.Models
     {
         public Book()
         {
-            this.Comments = new List<Comment>();
-            this.BookAspNetUsers = new List<BookAspNetUsers>();
+            this.Comments = new HashSet<Comment>();
+            this.BookAspNetUsers = new HashSet<BookAspNetUsers>();
 
         }
 
-        public int Id { get; set; }
+        public int BookId { get; set; }
         public Nullable<int> Year { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

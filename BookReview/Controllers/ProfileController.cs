@@ -22,9 +22,9 @@ namespace BookReview.Controllers
         }
 
 
-        public ActionResult Index(string userId)
+        public ActionResult Profile(string userId)
         {
-            var result = db.AspNetUsers.Find(userId);
+            var result = db.AspNetUsers.First(p => p.FullName == userId); 
             return View(result);
         }
 
@@ -48,7 +48,7 @@ namespace BookReview.Controllers
             BookUserJunction.AspNetUserId = User.Identity.GetUserId();
             BookUserJunction.BookId = id;
             db.BookAspNetUsers.Add(BookUserJunction);
-            db.SaveChanges(); 
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
          

@@ -1,0 +1,16 @@
+﻿@model BookReview.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Профиль пользователя @Html.DisplayFor(model => model.FullName)</h2>
+
+
+
+<p>
+
+    @{
+        Html.RenderAction("_FavBooks");
+    }
+</p>

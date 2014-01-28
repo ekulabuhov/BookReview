@@ -13,7 +13,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title"> 
                      
-                     @Html.ActionLink(comment.AspNetUser.FullName, "Index", "Profile", new {userId = comment.AspNetUser_Id}) напейсал: 
+                     @Html.ActionLink(comment.AspNetUser.FullName, "Profile", "Profile", new {userId = comment.AspNetUser.FullName}, null) напейсал: 
                      @Html.DisplayFor(modelitem => comment.PostedOn)
                  
                 </h3>
@@ -40,7 +40,7 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input class="text-box single-line" name="comment" type="text" />
-                    <input name="bukid" type="hidden" value="@Model.Id" />
+                    <input name="bukid" type="hidden" value="@Model.BookId" />
                 </div>
             </div>
 

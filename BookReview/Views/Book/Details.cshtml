@@ -17,7 +17,7 @@
 {
     if (ViewBag.AddToFavz == false) 
     { 
-    @Html.ActionLink("Добавить", "AddToFavs", "Profile", new { id = Model.Id }, null);
+    @Html.ActionLink("Добавить", "AddToFavs", "Profile", new { id = Model.BookId }, null);
     }
 }
         </td>

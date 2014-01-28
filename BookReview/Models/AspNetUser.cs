@@ -7,10 +7,10 @@ namespace BookReview.Models
     {
         public AspNetUser()
         {
-            this.AspNetUserClaims = new List<AspNetUserClaim>();
-            this.AspNetUserLogins = new List<AspNetUserLogin>();
-            this.AspNetRoles = new List<AspNetRole>();
-            this.BookAspNetUsers = new List<BookAspNetUsers>();
+            this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
+            this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
+            this.AspNetRoles = new HashSet<AspNetRole>();
+            this.BookAspNetUsers = new HashSet<BookAspNetUsers>();
         }
 
         public string Id { get; set; }

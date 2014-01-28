@@ -8,8 +8,8 @@
             <td class="bookThumbnailTd">
                 <img class="bookThumbnail" src="@item.Picture" /> <br />
 
-                @Html.ActionLink("Подробней", "Details", "Book", new { id = item.Id }, null)
-                @Html.ActionLink("Удалить", "RemoveFromFav", "Profile", new { id = item.Id }, null)
+                @Html.ActionLink("Подробней", "Details", "Book", new { id = item.BookId }, null)
+                @Html.ActionLink("Удалить", "RemoveFromFav", "Profile", new { id = item.BookId }, null)
             </td>
             <td class="bookDetailsTd">
                 @if (!string.IsNullOrEmpty(item.Title))

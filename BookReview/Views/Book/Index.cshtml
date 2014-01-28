@@ -16,7 +16,7 @@
             <td class="bookThumbnailTd">
                 <img class="bookThumbnail" src="@item.Picture" /> <br />
                  
-                @Html.ActionLink("Подробней", "Details", new { id = item.Id })  
+                @Html.ActionLink("Подробней", "Details", new { id = item.BookId })  
             </td>
             <td class="bookDetailsTd">
                 @if (!string.IsNullOrEmpty(item.Title))
@@ -45,7 +45,7 @@
 
             <td class="bookDescriptionTd">
                 @Html.DisplayFor(modelItem => item.Description)
-                @Html.ActionLink("Подробнее", "Details", new { id = item.Id }, new { @class = "podrobneeLink" });
+                @Html.ActionLink("Подробнее", "Details", new { id = item.BookId }, new { @class = "podrobneeLink" });
             </td>
         </tr>
     }

@@ -168,26 +168,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201401271255454_appharbor.cs" />
-    <Compile Include="Migrations\201401271255454_appharbor.Designer.cs">
-      <DependentUpon>201401271255454_appharbor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401281149510_UniqueOnJunction.cs" />
-    <Compile Include="Migrations\201401281149510_UniqueOnJunction.Designer.cs">
-      <DependentUpon>201401281149510_UniqueOnJunction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401281710278_Fixing comment section.cs" />
-    <Compile Include="Migrations\201401281710278_Fixing comment section.Designer.cs">
-      <DependentUpon>201401281710278_Fixing comment section.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401281733569_Still fixing.cs" />
-    <Compile Include="Migrations\201401281733569_Still fixing.Designer.cs">
-      <DependentUpon>201401281733569_Still fixing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401281842345_comment revival.cs" />
-    <Compile Include="Migrations\201401281842345_comment revival.Designer.cs">
-      <DependentUpon>201401281842345_comment revival.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\BookController.cs" />
@@ -259,6 +239,7 @@
     <Content Include="Views\AddComment\Reply.cshtml" />
     <Content Include="Views\Profile\_FavBooks.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -272,23 +253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201401271255454_appharbor.resx">
-      <DependentUpon>201401271255454_appharbor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401281149510_UniqueOnJunction.resx">
-      <DependentUpon>201401281149510_UniqueOnJunction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401281710278_Fixing comment section.resx">
-      <DependentUpon>201401281710278_Fixing comment section.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401281733569_Still fixing.resx">
-      <DependentUpon>201401281733569_Still fixing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401281842345_comment revival.resx">
-      <DependentUpon>201401281842345_comment revival.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
