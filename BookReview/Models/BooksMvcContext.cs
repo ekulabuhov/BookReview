@@ -20,16 +20,16 @@ namespace BookReview.Models
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BooksMvcContext, Configuration>());
 
-            //// Relationships
-            //modelBuilder.Entity<AspNetRole>()
-            //    .HasMany(t => t.AspNetUsers)
-            //    .WithMany(t => t.AspNetRoles)
-            //    .Map(m =>
-            //    {
-            //        m.ToTable("AspNetUserRoles");
-            //        m.MapLeftKey("RoleId");
-            //        m.MapRightKey("UserId");
-            //    });
+            // Relationships
+            modelBuilder.Entity<AspNetRole>()
+                .HasMany(t => t.AspNetUsers)
+                .WithMany(t => t.AspNetRoles)
+                .Map(m =>
+                {
+                    m.ToTable("AspNetUserRoles");
+                    m.MapLeftKey("RoleId");
+                    m.MapRightKey("UserId");
+                });
 
 
         }
