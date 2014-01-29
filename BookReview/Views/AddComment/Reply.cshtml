@@ -13,7 +13,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title"> 
                      
-                     @Html.ActionLink(comment.AspNetUser.FullName, "Index", "Profile", new {UserProfile = comment.AspNetUser.FullName}, null) напейсал: 
+                     @Html.ActionLink(comment.AspNetUser.FullName, "Index", "Profile", new {commentedBy = comment.AspNetUser.FullName}, null) написал: 
                      @Html.DisplayFor(modelitem => comment.PostedOn)
                  
                 </h3>
@@ -57,10 +57,12 @@
 }
 else
 {   <ul class="list-group">
-            You cunt post no comment here. Go register or vagin.
-            <li class="list-group-item">
-                @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-                @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-            </li>
+    <li class="list-group-item">
+    Вы не можете оставлять комментарии. Пожалуйста, @Html.ActionLink("войдите", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    или @Html.ActionLink("зарегистрируйтесь", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+
+
+
+</li>
         </ul>
 }
