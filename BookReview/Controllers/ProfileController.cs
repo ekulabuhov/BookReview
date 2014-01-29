@@ -42,6 +42,7 @@ namespace BookReview.Controllers
             {
                foreach (var huj in result)
                 {
+                   //this is used as a flag to be passed to view. I decided to go for this approach because I prefer not to use Viewbag..Or because the voices in my head told me to do so...
                     huj.BookAspNetUsers.Clear();
                 } 
             }
