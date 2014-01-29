@@ -9,7 +9,10 @@
                 <img class="bookThumbnail" src="@item.Picture" /> <br />
 
                 @Html.ActionLink("Подробней", "Details", "Book", new { id = item.BookId }, null)
+                @if (item.BookAspNetUsers.Count() > 0)
+                { 
                 @Html.ActionLink("Удалить", "RemoveFromFav", "Profile", new { id = item.BookId }, null)
+                }
             </td>
             <td class="bookDetailsTd">
                 @if (!string.IsNullOrEmpty(item.Title))

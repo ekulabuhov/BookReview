@@ -11,6 +11,6 @@
 <p>
 
     @{
-        Html.RenderAction("_FavBooks");
+        Html.RenderAction("_FavBooks", "Profile", new { queryProfile = Model.FullName});
     }
 </p>

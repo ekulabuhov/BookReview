@@ -13,7 +13,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title"> 
                      
-                     @Html.ActionLink(comment.AspNetUser.FullName, "Profile", "Profile", new {userId = comment.AspNetUser.FullName}, null) напейсал: 
+                     @Html.ActionLink(comment.AspNetUser.FullName, "Index", "Profile", new {UserProfile = comment.AspNetUser.FullName}, null) напейсал: 
                      @Html.DisplayFor(modelitem => comment.PostedOn)
                  
                 </h3>

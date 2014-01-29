@@ -14,30 +14,40 @@ namespace BookReview.Controllers
 
         //
         // GET: /Profile/
-        public ActionResult Index()
+        public ActionResult Index(string UserProfile)
+        {
+            //if no parameter passed, open current user profile
+            if (UserProfile == null)
+            {
+                var queryUserId = User.Identity.GetUserId();
+                var result = db.AspNetUsers.Find(queryUserId);
+                return View(result);
+            }  else
+            {
+                var result = db.AspNetUsers.First(p => p.FullName == UserProfile);
+                return View(result);
+            }
+        } 
+
+        public ActionResult _FavBooks(string queryProfile)
         {
             var queryUserId = User.Identity.GetUserId();
-            var result = db.AspNetUsers.Find(queryUserId);
-            return View(result);
-        }
-
-
-        public ActionResult Profile(string userId)
-        {
-            var result = db.AspNetUsers.First(p => p.FullName == userId); 
-            return View(result);
-        }
-
-
-
-        public ActionResult _FavBooks()
-        {
-            var queryUserId = User.Identity.GetUserId();
-            var huj = (from s in db.Books
-                      from c in s.BookAspNetUsers
-                      where c.AspNetUserId == queryUserId
-                      select s).ToList(); 
-            return PartialView(huj);
+            var blah = db.AspNetUsers.Find(queryUserId); 
+            var result = (from s in db.Books
+                          from c in s.BookAspNetUsers
+                          where c.AspNetUserId == queryUserId
+                          select s).ToList();
+            //Check if the current user is the owner of that profile
+            if (queryProfile != null && queryProfile != blah.FullName)
+            {
+               foreach (var huj in result)
+                {
+                    huj.BookAspNetUsers.Clear();
+                } 
+            }
+             
+                return PartialView(result);
+             
         }
 
 
