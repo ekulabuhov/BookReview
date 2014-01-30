@@ -31,7 +31,7 @@ namespace BookReview.Controllers
                                           select s).ToList();
                 viewModel.CanEditProfile = true;
                 return View(viewModel);
-            }  else
+            }   else
             {
                 viewModel.ProfilePicture = "http://www.journaldugamer.com/files/2013/04/richardgarriott1.jpg"; 
                 var queriedUserDetails = db.AspNetUsers.First(p => p.FullName == commentedBy);
