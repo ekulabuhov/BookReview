@@ -10,7 +10,7 @@ namespace BookReview.Models
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.AspNetRoles = new HashSet<AspNetRole>();
-            this.BookAspNetUsers = new HashSet<BookAspNetUsers>();
+            this.BookAspNetUsers = new HashSet<BookAspNetUsers>(); 
         }
 
         public string Id { get; set; }
@@ -24,5 +24,6 @@ namespace BookReview.Models
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<BookAspNetUsers> BookAspNetUsers { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

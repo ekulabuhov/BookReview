@@ -1,16 +1,70 @@
-﻿@model BookReview.Models.AspNetUser
+﻿@model BookReview.Models.ProfileViewModels
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Профиль пользователя @Html.DisplayFor(model => model.FullName)</h2> 
- 
+@if (Model.CanEditProfile == true)
+                {
+<h2>Добро пожаловать, @Model.FullName</h2> 
+                } else 
+{ 
+   
+    <h2>Профиль @Model.FullName</h2> 
+}
+
+<img style="max-width: 330px;" src="@Model.ProfilePicture" /> <br />
 
 
-<p> 
-     
-    @{
-        Html.RenderAction("_FavBooks", "Profile", new { queriedFavBooks = Model.FullName });
+
+
+<h3>Любимые книги</h3>
+@if (Model.FavBooks.Count() == 0)
+{
+    @:Пользователь ещё не добавил книги в свою коллекцию
+}
+
+
+<table class="searchResultTable">
+    @foreach (var item in Model.FavBooks)
+    {
+        <tr>
+            <td class="bookThumbnailTd">
+                <img class="bookThumbnail" src="@item.Picture" /> <br />
+
+                @Html.ActionLink("Подробней", "Details", "Book", new { id = item.BookId }, null)
+                @if (Model.CanEditProfile == true)
+                {
+                    @Html.ActionLink("Удалить", "RemoveFromFav", "Profile", new { id = item.BookId }, null)
+                }
+            </td>
+            <td class="bookDetailsTd">
+                @if (!string.IsNullOrEmpty(item.Title))
+                { @Html.DisplayFor(modelItem => item.Title) <br />}
+                @if (!string.IsNullOrEmpty(item.Author))
+                { @Html.DisplayFor(modelItem => item.Author)<br />}
+
+                @Html.DisplayFor(modelItem => item.Year)<br />
+                @if (!string.IsNullOrEmpty(item.Publisher))
+                {  @Html.DisplayFor(modelItem => item.Publisher)<br />}
+
+                @if (!string.IsNullOrEmpty(item.Series))
+                {@Html.DisplayFor(modelItem => item.Series)<br />}
+
+                @if (!string.IsNullOrEmpty(item.Language))
+                {  @Html.DisplayFor(modelItem => item.Language)<br />}
+
+                @if (!string.IsNullOrEmpty(item.Page_extent))
+                {   @Html.DisplayFor(modelItem => item.Page_extent) <span> Страниц</span><br />}
+
+                ISBN: @Html.DisplayFor(modelItem => item.ISBN) <br />
+
+                Цена: @Html.DisplayFor(modelItem => item.Price)<br />
+                <a href="@item.Url">Купить</a>
+            </td>
+
+
+        </tr>
     }
-</p>
+</table>
+ 

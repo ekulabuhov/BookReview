@@ -8,12 +8,11 @@ namespace BookReview.Models
     {
         public int CommentId { get; set; }
         public string Text { get; set; }
-        public System.DateTime PostedOn { get; set; }
-        public int BookId { get; set; }
-        [MaxLength(128)] 
+        public System.DateTime PostedOn { get; set; }  
+        public int ReviewId { get; set; }
         public string AspNetUserId { get; set; }
-        
-        public virtual Book Book { get; set; }
+
+        public virtual Review Review { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
         
     }

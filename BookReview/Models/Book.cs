@@ -7,9 +7,9 @@ namespace BookReview.Models
     public partial class Book
     {
         public Book()
-        {
-            this.Comments = new HashSet<Comment>();
+        { 
             this.BookAspNetUsers = new HashSet<BookAspNetUsers>();
+            this.Reviews = new HashSet<Review>();
 
         }
 
@@ -28,9 +28,9 @@ namespace BookReview.Models
         public string Page_extent { get; set; }
         public string Barcode { get; set; }
         public string Series { get; set; }
-        public Nullable<int> OzonBookId { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<BookAspNetUsers> BookAspNetUsers { get; set; } 
+        public Nullable<int> OzonBookId { get; set; } 
+        public virtual ICollection<BookAspNetUsers> BookAspNetUsers { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; } 
 
     }
 

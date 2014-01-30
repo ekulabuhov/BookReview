@@ -14,7 +14,8 @@ namespace BookReview.Models
         public DbSet<AspNetUser> AspNetUsers { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Book> Books { get; set; }
-        public DbSet<BookAspNetUsers> BookAspNetUsers { get; set; } 
+        public DbSet<BookAspNetUsers> BookAspNetUsers { get; set; }
+        public DbSet<Review> Reviews { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

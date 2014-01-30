@@ -4,7 +4,9 @@
     Custom css. Ream
     */
 /*GENERAL*/
-
+.container.body-content {
+background:rgba(255, 255, 255,1);
+}
 body {
 background:url(../content/bg.jpg) repeat;}
  
@@ -45,3 +47,30 @@ width:1000px;
 font-size:9px;
 color:red;
 }
+
+
+.bubble 
+{
+float:left;
+position: relative;  
+padding: 21px;
+margin: 0 0 14px 21px;
+background: #DFE0E3;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 15px 0;
+border-color: transparent #DFE0E3;
+display: block;
+width: 0;
+z-index: 1;
+left: -15px;
+top: 9px;
+} 
