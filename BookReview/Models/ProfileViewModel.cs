@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BookReview.Models
 {
-    public class ProfileViewModels
+    public class ProfileViewModel
     {
         public string FullName { get; set; }
         public string ProfilePicture { get; set; }

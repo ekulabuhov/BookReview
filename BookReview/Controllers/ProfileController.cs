@@ -14,18 +14,17 @@ namespace BookReview.Controllers
 
         //
         // GET: /Profile/
-        public ActionResult Index(string commentedBy)
+        public ActionResult Index(string id)
         { 
-            
-            ProfileViewModels viewModel = new ProfileViewModels();
+            var viewModel = new ProfileViewModel();
             var currentLoggedUser = User.Identity.GetUserId(); 
             var userDetails = db.AspNetUsers.Find(currentLoggedUser); 
             //if no parameter passed, open current user profile
-            if (((commentedBy != null) && (currentLoggedUser == null)) || ((commentedBy != null) && (commentedBy != userDetails.FullName)))
+            if (((id != null) && (currentLoggedUser == null)) || ((id != null) && (id != userDetails.FullName)))
            {
                 viewModel.ProfilePicture = "http://www.journaldugamer.com/files/2013/04/richardgarriott1.jpg"; 
-                var queriedUserDetails = db.AspNetUsers.First(p => p.FullName == commentedBy);
-                viewModel.FullName = commentedBy;
+                var queriedUserDetails = db.AspNetUsers.First(p => p.FullName == id);
+                viewModel.FullName = id;
                 viewModel.FavBooks = (from s in db.Books
                                       from c in s.BookAspNetUsers
                                       where c.AspNetUserId == queriedUserDetails.Id

@@ -10,7 +10,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">
 
-                    @Html.ActionLink(review.AspNetUser.FullName, "Index", "Profile", new { commentedBy = review.AspNetUser.FullName }, null) написал отзыв:
+                    <a href="/Profile/@review.AspNetUser.FullName">@review.AspNetUser.FullName</a> написал отзыв:
                     @Html.DisplayFor(modelitem => review.PostedOn)
 
                 </h3>
