@@ -25,8 +25,8 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div style="float:left">
-                        @Html.ActionLink(comment.AspNetUser.FullName, "Index", "Profile", new { commentedBy = comment.AspNetUser.FullName }, null)
+                    <div style="float:left"> 
+                        <a href="/Profile/@comment.AspNetUser.FullName">@comment.AspNetUser.FullName</a>
                         <br />
                         @Html.DisplayFor(modelitem => comment.PostedOn)
                     </div>
