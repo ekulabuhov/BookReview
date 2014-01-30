@@ -35,6 +35,7 @@ namespace BookReview.Controllers
             {
                 viewModel.ProfilePicture = "http://www.journaldugamer.com/files/2013/04/richardgarriott1.jpg"; 
                 var queriedUserDetails = db.AspNetUsers.First(p => p.FullName == commentedBy);
+                viewModel.FullName = userDetails.FullName;
                 viewModel.FavBooks = (from s in db.Books
                                       from c in s.BookAspNetUsers
                                       where c.AspNetUserId == queriedUserDetails.Id
