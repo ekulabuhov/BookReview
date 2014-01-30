@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookReview.Models
-{
+{ 
     public partial class Comment
     {
         public int CommentId { get; set; }
