@@ -14,36 +14,27 @@ namespace BookReview.Controllers
 
         //
         // GET: /Profile/
-        public ActionResult Index(string id)
-        { 
+        public ActionResult Index(string userName)
+        {
             var viewModel = new ProfileViewModel();
-            var currentLoggedUser = User.Identity.GetUserId(); 
-            var userDetails = db.AspNetUsers.Find(currentLoggedUser); 
-            //if no parameter passed, open current user profile
-            if (((id != null) && (currentLoggedUser == null)) || ((id != null) && (id != userDetails.FullName)))
-           {
-                viewModel.ProfilePicture = "http://www.journaldugamer.com/files/2013/04/richardgarriott1.jpg"; 
-                var queriedUserDetails = db.AspNetUsers.First(p => p.FullName == id);
-                viewModel.FullName = id;
-                viewModel.FavBooks = (from s in db.Books
-                                      from c in s.BookAspNetUsers
-                                      where c.AspNetUserId == queriedUserDetails.Id
-                                      select s).ToList();
-                viewModel.CanEditProfile = false;
-                return View(viewModel); 
-            }else
-            { 
-                viewModel.FullName = userDetails.FullName;
-                viewModel.ProfilePicture = "http://www.journaldugamer.com/files/2013/04/richardgarriott1.jpg";
-                viewModel.FavBooks = (from s in db.Books
-                                          from c in s.BookAspNetUsers
-                                          where c.AspNetUserId == currentLoggedUser
-                                          select s).ToList();
-                viewModel.CanEditProfile = true;
-                return View(viewModel);
-            }  
-          
-           
+            AspNetUser queriedUser;
+
+            // Maybe show a picture of a big dick?
+            if ((userName == null) && (Request.IsAuthenticated == false))
+                return RedirectToAction("Index", "Home");
+
+            string loggedUserId = User.Identity.GetUserId();
+
+            if (userName != null)
+                queriedUser = db.AspNetUsers.SingleOrDefault(u => u.FullName == userName);
+            else
+                queriedUser = db.AspNetUsers.Find(loggedUserId);
+
+            viewModel.ProfilePicture = "http://www.journaldugamer.com/files/2013/04/richardgarriott1.jpg";
+            viewModel.FullName = queriedUser.FullName;
+            viewModel.FavBooks = queriedUser.BookAspNetUsers.Select(x => x.Book).ToList();
+            viewModel.CanEditProfile = (queriedUser.Id == loggedUserId);
+            return View(viewModel);
         }
          
         public ActionResult AddToFavs(int id)

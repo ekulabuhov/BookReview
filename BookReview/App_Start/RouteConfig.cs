@@ -15,7 +15,7 @@ namespace BookReview
 
             routes.MapRoute(
                 name: "Profile",
-                url: "Profile/{id}",
+                url: "Profile/{userName}",
                 defaults: new { controller = "Profile", action = "Index", id = UrlParameter.Optional }
             );
 
