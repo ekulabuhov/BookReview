@@ -51,17 +51,26 @@ namespace BookReview.Models
         [HttpPost]
         public ActionResult Index(string searchString)
         {
-            var searchMainResult = db.Books.Where(b => b.Title.Contains(searchString) || b.Author.Contains(searchString) || b.Description.Contains(searchString));
+            string userId = User.Identity.GetUserId(); 
 
-            foreach (var item in searchMainResult)
-            {
+            BookViewModel model = new BookViewModel(); 
+            model.Books = db.Books.Where(b => b.Title.Contains(searchString) || b.Author.Contains(searchString) || b.Description.Contains(searchString)).ToList(); 
+            foreach (var item in model.Books)
+            { 
+                if (Request.IsAuthenticated == true){ 
+                bool huj = db.BookAspNetUsers.Any(rec => rec.BookId == item.BookId && rec.AspNetUserId == userId); 
+                model.AddedToFavs.Add(huj); 
+                }
+
                 if (item.Description != null)
                 {
                     item.Description = item.Description.Substring(0, Math.Min(item.Description.Length, 350));
-                    item.Description += "...  ";
+                    item.Description += "...  ";   
                 }
+                 
             }
-            return View(searchMainResult);
+            
+            return View(model);
         }
 
         // GET: /Book/Details/5

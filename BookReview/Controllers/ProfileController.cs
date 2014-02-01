@@ -37,14 +37,15 @@ namespace BookReview.Controllers
             return View(viewModel);
         }
          
-        public ActionResult AddToFavs(int id)
+        public JsonResult AddToFavs(int id)
         {
             BookAspNetUsers BookUserJunction = new BookAspNetUsers();
             BookUserJunction.AspNetUserId = User.Identity.GetUserId();
             BookUserJunction.BookId = id;
             db.BookAspNetUsers.Add(BookUserJunction);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            var huj = "Добавлена";
+            return Json(huj);
         }
          
 

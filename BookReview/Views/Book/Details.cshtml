@@ -11,14 +11,17 @@
     <tr>
         <td class="bookThumbnailTd">
             <img class="bookThumbnail" src="@Model.Picture" /> <br />
-
-            @Html.ActionLink("Edit", "Edit", new { id = Model.OzonBookId })
+             
 @if (Request.IsAuthenticated)
 {
-    if (ViewBag.AddToFavz == false) 
-    { 
-    @Html.ActionLink("Добавить", "AddToFavs", "Profile", new { id = Model.BookId }, null);
+    <span id="CanBeAdded">
+    @if (ViewBag.AddToFavz == true) 
+    {  
+    @Ajax.ActionLink("Добавить", "AddToFavs", "Profile", new { id = Model.BookId }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CanBeAdded", InsertionMode = InsertionMode.Replace })
+    }else{
+       <span>Добавлена</span> 
     }
+    </span>
 }
         </td>
 

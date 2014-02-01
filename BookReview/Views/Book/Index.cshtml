@@ -1,22 +1,37 @@
-﻿@model IEnumerable<BookReview.Models.Book>
+﻿@model BookReview.Models.BookViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "La Resultate поиска";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>La Resultate поиска</h2>
+<br />
+ 
 <table class="searchResultTable">
-    @foreach (var item in Model)
-    {
+    @foreach (var item in Model.Books)
+    {  
         <tr>
             <td class="bookThumbnailTd">
                 <img class="bookThumbnail" src="@item.Picture" /> <br />
                  
                 @Html.ActionLink("Подробней", "Details", new { id = item.BookId })  
+             @if (Request.IsAuthenticated)
+                    {
+                                foreach (var check in Model.AddedToFavs) { 
+                                <span id="CanBeAdded">
+                                    @if (check == true)
+                                    {
+                                        @Ajax.ActionLink("Добавить", "AddToFavs", "Profile", new { id = item.BookId }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CanBeAdded", InsertionMode = InsertionMode.Replace })
+                                    }
+                                    else
+                                    {
+                                        <span>Добавлена</span>
+                                    }
+                                </span>
+                                }  
+                    }
+
+
             </td>
             <td class="bookDetailsTd">
                 @if (!string.IsNullOrEmpty(item.Title))
