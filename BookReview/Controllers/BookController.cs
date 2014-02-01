@@ -51,23 +51,42 @@ namespace BookReview.Models
         [HttpPost]
         public ActionResult Index(string searchString)
         {
-            string userId = User.Identity.GetUserId(); 
+            string userId = User.Identity.GetUserId();
+            List<BookViewModel> model = (from x in db.Books
+                                         where x.Title.Contains(searchString) ||
+                                             x.Author.Contains(searchString) ||
+                                             x.Description.Contains(searchString)
+                                         select new BookViewModel { 
+                                             BookId = x.BookId,
+                                             Price = x.Price,
+                                             Author = x.Author,
+                                             Title = x.Title,
+                                             Year = x.Year,
+                                             Description = x.Description,
+                                             OzonBookId = x.OzonBookId,
+                                             Url = x.Url,
+                                             Picture = x.Picture,
+                                             Publisher = x.Publisher,
+                                             ISBN = x.ISBN,
+                                             Language = x.Language,
+                                             Binding = x.Binding,
+                                             Page_extent = x.Page_extent,
+                                             Barcode = x.Barcode,
+                                             Series = x.Series, 
+                                             AddedToFavs = false 
+                                         }).ToList();
 
-            BookViewModel model = new BookViewModel(); 
-            model.Books = db.Books.Where(b => b.Title.Contains(searchString) || b.Author.Contains(searchString) || b.Description.Contains(searchString)).ToList(); 
-            foreach (var item in model.Books)
-            { 
-                if (Request.IsAuthenticated == true){ 
-                bool huj = db.BookAspNetUsers.Any(rec => rec.BookId == item.BookId && rec.AspNetUserId == userId); 
-                model.AddedToFavs.Add(huj); 
-                }
 
+            //model = db.Books.Where(b => b.Title.Contains(searchString) || b.Author.Contains(searchString) || b.Description.Contains(searchString)); 
+             
+            foreach (var item in model)
+            {  
                 if (item.Description != null)
                 {
                     item.Description = item.Description.Substring(0, Math.Min(item.Description.Length, 350));
                     item.Description += "...  ";   
                 }
-                 
+                item.AddedToFavs = db.BookAspNetUsers.Any(rec => rec.BookId == item.BookId && rec.AspNetUserId == userId); 
             }
             
             return View(model);

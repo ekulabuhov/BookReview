@@ -1,4 +1,4 @@
-﻿@model BookReview.Models.BookViewModel
+﻿@model IEnumerable<BookReview.Models.BookViewModel>
 
 @{
     ViewBag.Title = "La Resultate поиска";
@@ -8,7 +8,7 @@
 <br />
  
 <table class="searchResultTable">
-    @foreach (var item in Model.Books)
+    @foreach (var item in Model)
     {  
         <tr>
             <td class="bookThumbnailTd">
@@ -17,18 +17,17 @@
                 @Html.ActionLink("Подробней", "Details", new { id = item.BookId })  
              @if (Request.IsAuthenticated)
                     {
-                                foreach (var check in Model.AddedToFavs) { 
-                                <span id="CanBeAdded">
-                                    @if (check == true)
+                              
+                                <span id="@item.BookId">
+                                    @if (item.AddedToFavs == false)
                                     {
-                                        @Ajax.ActionLink("Добавить", "AddToFavs", "Profile", new { id = item.BookId }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CanBeAdded", InsertionMode = InsertionMode.Replace })
+                                        @Ajax.ActionLink("Добавить", "AddToFavs", "Profile", new { id = item.BookId }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = @item.BookId.ToString(), InsertionMode = InsertionMode.Replace })
                                     }
                                     else
                                     {
                                         <span>Добавлена</span>
                                     }
-                                </span>
-                                }  
+                                </span> 
                     }
 
 
