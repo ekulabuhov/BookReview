@@ -1,83 +1,105 @@
-﻿@model BookReview.Models.Book
+﻿@model BookReview.Models.ReviewViewModel
 
-
+@{int huj = 0;}
 <h4>Отзывы</h4>
 
-@if (Model != null)
-{
-    foreach (var review in Model.Reviews)
-    { <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">
+    @if (Model != null)
+    {
+        foreach (var review in Model.Reviews)
+                { <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
 
-                    <a href="/Profile/@review.AspNetUser.FullName">@review.AspNetUser.FullName</a> написал отзыв:
-                    @Html.DisplayFor(modelitem => review.PostedOn)
-
-                </h3>
-            </div>
-            <div class="panel-body">
-                @Html.DisplayFor(modelitem => review.Text)
-            </div>
-        </div>
-        //Iterating comments
-        foreach (var comment in review.Comments)
-        {
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="float:left"> 
-                        <a href="/Profile/@comment.AspNetUser.FullName">@comment.AspNetUser.FullName</a>
-                        <br />
-                        @Html.DisplayFor(modelitem => comment.PostedOn)
+                            <a href="/Profile/@review.AspNetUser.FullName">@review.AspNetUser.FullName</a> написал отзыв:
+                            @Html.DisplayFor(modelitem => review.PostedOn)  </h3>
                     </div>
-                    <div class="bubble">
-                        @Html.DisplayFor(modelitem => comment.Text)
+                    <div class="panel-body">
+                        @Html.DisplayFor(modelitem => review.Text)
                     </div>
-                </div></div> <br />
+                </div>
+            //Iterating comments
+            foreach (var comment in review.Comments)
+            { 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="float:left">
+                            <a href="/Profile/@comment.AspNetUser.FullName">@comment.AspNetUser.FullName</a>
+                            <br />
+                            @Html.DisplayFor(modelitem => comment.PostedOn)
+                        </div>
+                        <div class="bubble">
+                            @Html.DisplayFor(modelitem => comment.Text)
+                        </div>
+                    </div>
+                </div> <br />
+            }
+            
+            huj = review.ReviewId;
+            <div id="@huj">
+            </div>
+
+
+
+            @*   COMMENT SUBMIT FORM    *@
+            if (Request.IsAuthenticated)
+            {
+                using (Ajax.BeginForm("AddComment", "AddReview", new AjaxOptions { HttpMethod = "POST", 
+                                                                                    UpdateTargetId = @huj.ToString(), 
+                                                                                    InsertionMode = InsertionMode.InsertAfter }))
+                { @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+
+                        <div class="input-group">
+                            <input class="form-control" name="commentText" type="text" />
+                            <input name="bookId" type="hidden" value="@review.BookId" />
+                            <input name="reviewId" type="hidden" value="@review.ReviewId" />
+                            <input name="name" type="hidden" value="@review.AspNetUser.FullName" />
+                            <span class="input-group-btn"><button type="submit" class="btn btn-info">Оставить комментарий</button> </span>
+                        </div>
+                    </div>
+                </div> }
+            }
+
+
+
         }
 
-                                              @*   COMMENT SUBMIT FORM    *@ 
-                                                if (Request.IsAuthenticated)
-                                                {  using (Html.BeginForm("AddComment", "AddReview", FormMethod.Post))
-                                                    { @Html.AntiForgeryToken() 
-                                                        <div class="form-horizontal">   
-                                                            @Html.ValidationSummary(true) 
-                                                            <div class="form-group">
-
-                                                                <div class="input-group">  
-                                                                        <input class="form-control" name="comment" type="text" />
-                                                                        <input name="bukid" type="hidden" value="@Model.BookId" />
-                                                                        <input name="rivjuid" type="hidden" value="@review.ReviewId" /> 
-                                                                    <span class="input-group-btn"><button type="submit" class="btn btn-info">Оставить комментарий</button> </span>
-                                                                </div> </div> </div> } } 
+        <div id="revw">
+        </div>
+         
     }
-}
 
 
-                                 @*   REVIEW SUBMIT FORM    *@ 
-                                @if (Request.IsAuthenticated)
-                                { using (Html.BeginForm("AddReview", "AddReview", FormMethod.Post))
-                                    { @Html.AntiForgeryToken() 
-                                        <div class="form-horizontal"> 
-                                            @Html.ValidationSummary(true)
-                                            <div class="form-group">
-                                                <div class="input-group"> 
-                                                    <input class="form-control" name="review" type="text" />
-                                                    <input name="bukid" type="hidden" value="@Model.BookId" />
-                                                    <span class="input-group-btn"><button type="submit" class="btn btn-danger">Написать новый отзыв</button> </span> 
-                                                </div>
-                                            </div>   
-                                          </div> } }
-                                     
-
-else
-{   <ul class="list-group">
-    <li class="list-group-item">
-    Вы не можете оставлять отзывы или комментарии. Пожалуйста, @Html.ActionLink("войдите", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    или @Html.ActionLink("зарегистрируйтесь", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+    @*   REVIEW SUBMIT FORM    *@
+    @if (Request.IsAuthenticated)
+    {  using (Html.BeginForm("AddReview", "AddReview", FormMethod.Post))
+        //using (Ajax.BeginForm("AddReview", "AddReview", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "revw", InsertionMode = InsertionMode.Replace }))
+        { @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" name="reviewText" type="text" />
+                    <input name="bookId" type="hidden" value="@Model.BookId" />
+                    <input name="name" type="hidden" value="@Model.FullName" />
+                    <span class="input-group-btn"><button type="submit" class="btn btn-danger">Написать новый отзыв</button> </span>
+                </div>
+            </div>
+        </div> }
+    }
 
 
+    else
+    {   <ul class="list-group">
+        <li class="list-group-item">
+            Вы не можете оставлять отзывы или комментарии. Пожалуйста, @Html.ActionLink("войдите", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+            или @Html.ActionLink("зарегистрируйтесь", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
 
-</li>
-        </ul>
-}
+
+
+        </li>
+    </ul>
+    }
+ 

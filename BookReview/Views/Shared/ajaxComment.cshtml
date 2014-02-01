@@ -1,0 +1,14 @@
+﻿@model BookReview.Models.ReviewViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div style="float:left">
+            <a href="/Profile/@Model.FullName">@Model.FullName</a>
+            <br />
+            @Html.DisplayFor(modelitem => Model.PostedOn)
+        </div>
+        <div class="bubble">
+            @Html.DisplayFor(modelitem => Model.Text)
+        </div>
+    </div>
+</div> <br />

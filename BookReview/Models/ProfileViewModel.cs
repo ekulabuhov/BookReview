@@ -10,7 +10,7 @@ namespace BookReview.Models
         public string FullName { get; set; }
         public string ProfilePicture { get; set; }
         public ICollection<Book> FavBooks { get; set; } 
-        public ICollection<Review> Review { get; set; }
+        public ICollection<Review> Reviews { get; set; }
         public bool CanEditProfile { get; set; } 
 
 

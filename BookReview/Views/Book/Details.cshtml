@@ -60,11 +60,9 @@
         </td>
     </tr>
 </table>
+   
 
-
-
-
-@Html.Partial("../AddReview/Reply", Model)
+@{Html.RenderAction("Reply", "AddReview", new { id = Model.BookId });}
 
 
 
