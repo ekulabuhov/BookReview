@@ -15,7 +15,7 @@
 @if (Request.IsAuthenticated)
 {
     <span id="CanBeAdded">
-    @if (ViewBag.AddToFavz == true) 
+    @if (ViewBag.AddToFavz == false) 
     {  
     @Ajax.ActionLink("Добавить", "AddToFavs", "Profile", new { id = Model.BookId }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CanBeAdded", InsertionMode = InsertionMode.Replace })
     }else{
