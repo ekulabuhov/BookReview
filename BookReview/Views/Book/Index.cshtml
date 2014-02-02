@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BookReview.Models.BookViewModel>
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<BookReview.Models.BookViewModel>
 
 @{
     ViewBag.Title = "La Resultate поиска";
@@ -64,3 +65,11 @@
         </tr>
     }
 </table>
+
+
+<div id='Paging' style="text-align:center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Book", new { page, searchString = ViewBag.SearchString }))
+</div>
