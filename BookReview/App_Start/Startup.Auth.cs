@@ -28,11 +28,11 @@ namespace BookReview
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+             app.UseFacebookAuthentication(
+             appId: "1405193753063349",
+             appSecret: "ec194b3c8fc300f1aae4908e931d682e");
 
-            //app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication();
         }
     }
 }
