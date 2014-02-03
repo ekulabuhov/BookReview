@@ -19,7 +19,7 @@
     {  
     @Ajax.ActionLink("Добавить", "AddToFavs", "Profile", new { id = Model.BookId }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CanBeAdded", InsertionMode = InsertionMode.Replace })
     }else{
-       <span>Добавлена</span> 
+       <span><img class="favouriteIcon" src="http://upload.wikimedia.org/wikipedia/commons/3/31/Crystal_Project_Package_favorite.png" /></span> 
     }
     </span>
 }

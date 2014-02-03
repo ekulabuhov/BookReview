@@ -30,7 +30,7 @@ namespace BookReview.Controllers
             else
                 queriedUser = db.AspNetUsers.Find(loggedUserId);
 
-            viewModel.ProfilePicture = "http://www.journaldugamer.com/files/2013/04/richardgarriott1.jpg";
+            viewModel.ProfilePicture = "http://bardolator23.files.wordpress.com/2011/04/laurence6-44391.jpg";
             viewModel.FullName = queriedUser.FullName;
             viewModel.FavBooks = queriedUser.BookAspNetUsers.Select(x => x.Book).ToList();
             viewModel.CanEditProfile = (queriedUser.Id == loggedUserId);
@@ -44,7 +44,7 @@ namespace BookReview.Controllers
             BookUserJunction.BookId = id;
             db.BookAspNetUsers.Add(BookUserJunction);
             db.SaveChanges();
-            var huj = "Добавлена";
+            var huj = "<img class='favouriteIcon' src='http://upload.wikimedia.org/wikipedia/commons/3/31/Crystal_Project_Package_favorite.png' />";
             return Json(huj);
         }
          

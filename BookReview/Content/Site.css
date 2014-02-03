@@ -5,10 +5,21 @@
     */
 /*GENERAL*/
 .container.body-content {
-background:rgba(255, 255, 255,1);
+background:rgba(0, 0, 0, 0.88);
+/*box-shadow:black 19px 19px 19px ;*/
 }
+.jumbotron {
+    background:rgba(0, 0, 0, 0 );
+}
+.navbar {
+background:rgba(0, 0, 0, 0.81);
+}
+
 body {
-background:url(../content/bg.jpg) repeat;}
+    color:white;
+background:url(../content/bg.jpg) center;
+background-attachment: fixed ;
+}
  
 body { padding-top: 50px; }
 /*TABLE*/
@@ -40,7 +51,7 @@ width:1000px;
 
 .bookThumbnail {
      max-width:130px; height:auto;
-     box-shadow:4px 4px 4px;
+     /*box-shadow:4px 4px 4px;*/
  }
 
 .podrobneeLink {
@@ -48,9 +59,24 @@ font-size:9px;
 color:red;
 }
 
+.favouriteIcon {
+max-width:15px;
+}
+
+.panel {
+    color:black;
+}
+
+.panel-primary > .panel-heading {
+background-color:#0D2E38;
+}
+.panel-primary > {
+background-color: white;
+}
 
 .bubble 
 {
+    color:black;
 float:left;
 position: relative;  
 padding: 21px;
