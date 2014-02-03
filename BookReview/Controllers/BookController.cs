@@ -17,6 +17,12 @@ namespace BookReview.Models
     {
         private BooksMvcContext db = new BooksMvcContext();
 
+        public string GetFullName()
+        {
+            string userId = User.Identity.GetUserId();
+            return db.AspNetUsers.Single(x => x.Id == userId).FullName;
+        }
+
         // GET: /Book/
         //public ActionResult Index()
         //{
