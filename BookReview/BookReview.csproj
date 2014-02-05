@@ -263,7 +263,6 @@
     <Content Include="Views\Book\Edit.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\AddReview\Reply.cshtml" />
-    <Content Include="Views\Book\_FavBooks.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Shared\ajaxComment.cshtml" />
     <Content Include="Views\Shared\ajaxReview.cshtml" />
