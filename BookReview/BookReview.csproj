@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddReviewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParserController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -262,7 +263,7 @@
     <Content Include="Views\Book\Edit.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\AddReview\Reply.cshtml" />
-    <Content Include="Views\Profile\_FavBooks.cshtml" />
+    <Content Include="Views\Book\_FavBooks.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Shared\ajaxComment.cshtml" />
     <Content Include="Views\Shared\ajaxReview.cshtml" />
@@ -279,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Parser\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201401301322213_fs.resx">

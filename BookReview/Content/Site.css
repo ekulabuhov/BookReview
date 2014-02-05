@@ -74,6 +74,11 @@ background-color:#0D2E38;
 background-color: white;
 }
 
+.pagination > li > a, .pagination > li > span {
+background-color: rgba(0, 0, 0, 0.00);
+border:none;
+}
+
 .bubble 
 {
     color:black;

@@ -10,6 +10,7 @@ using BookReview;
 using System.Xml.Linq;
 using Microsoft.AspNet.Identity;
 using PagedList;
+using System.Xml;
 
 namespace BookReview.Models
 {
@@ -23,38 +24,40 @@ namespace BookReview.Models
             return db.AspNetUsers.Single(x => x.Id == userId).FullName;
         }
 
-        // GET: /Book/
-        //public ActionResult Index()
-        //{
-            //if (db.Books.Count() < 1)
-            //{
-            //    XDocument xdoc = XDocument.Load("../../bx.xml");
-            //    List<Book> bookCollection = (from offer in xdoc.Descendants("offer")
-            //                                 select new Book
-            //                                 {
-            //                                     Price = (decimal?)offer.Element("price"),
-            //                                     Author = (string)offer.Element("author"),
-            //                                     Title = (string)offer.Element("name"),
-            //                                     Year = (int?)offer.Element("year"),
-            //                                     Description = (string)offer.Element("description"),
-            //                                     OzonBookId = (int?)offer.Attribute("id"),
-            //                                     Url = (string)offer.Element("url"),
-            //                                     Picture = (string)offer.Element("picture"),
-            //                                     Publisher = (string)offer.Element("publisher"),
-            //                                     ISBN = (string)offer.Element("ISBN"),
-            //                                     Language = (string)offer.Element("language"),
-            //                                     Binding = (string)offer.Element("binding"),
-            //                                     Page_extent = (string)offer.Element("page_extent"),
-            //                                     Barcode = (string)offer.Element("barcode"),
-            //                                     Series = (string)offer.Element("series"),
-            //                                 }).ToList();
-            //    db.Books.AddRange(bookCollection);
-            //    db.SaveChanges();
-            //}
-            //return RedirectToAction("Index", "Home");
-      //  }
+        
 
          
+        //public ActionResult _FavBooks()
+        //{
+        //    if (db.Books.Count() < 1)
+        //    {
+        //        XDocument xdoc = XDocument.Load("C:/Users/ream/Desktop/div_book/books.xml");
+        //        List<Book> bookCollection = (from offer in xdoc.Descendants("offer")
+        //                                     select new Book
+        //                                     {
+        //                                         Price = (decimal?)offer.Element("price"),
+        //                                         Author = (string)offer.Element("author"),
+        //                                         Title = (string)offer.Element("name"),
+        //                                         Year = (int?)offer.Element("year"),
+        //                                         Description = (string)offer.Element("description"),
+        //                                         OzonBookId = (int?)offer.Attribute("id"),
+        //                                         Url = (string)offer.Element("url"),
+        //                                         Picture = (string)offer.Element("picture"),
+        //                                         Publisher = (string)offer.Element("publisher"),
+        //                                         ISBN = (string)offer.Element("ISBN"),
+        //                                         Language = (string)offer.Element("language"),
+        //                                         Binding = (string)offer.Element("binding"),
+        //                                         Page_extent = (string)offer.Element("page_extent"),
+        //                                         Barcode = (string)offer.Element("barcode"),
+        //                                         Series = (string)offer.Element("series"),
+        //                                     }).ToList();
+        //        db.Books.AddRange(bookCollection);
+        //        db.SaveChanges();
+        //    }
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+    
         public ActionResult Index(string searchString, int? page)
         {
             ViewBag.SearchString = searchString;
