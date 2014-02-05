@@ -1,4 +1,5 @@
-﻿using BookReview.Models;
+﻿using System.Xml.Linq;
+using BookReview.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,30 @@ using System.Xml;
 
 namespace BookReview.Controllers
 {
+    class Category
+    {
+         
+    }
+
     public class ParserController : Controller
     {
+        //public void ParseCategories()
+        //{
+        //    XmlReader doc = new XmlTextReader(@"C:\Users\eugene.kulabuhov\Downloads\div_book.xml");
+        //    IEnumerable<ChemieComponent> result = from c in doc.Descendants("Component")
+        //                                          select new ChemieComponent()
+        //                                          {
+        //                                              Name = (string)c.Attribute("name"),
+        //                                              Id = (string)c.Attribute("id"),
+        //                                              MolarMass = (double)c.Attribute("molarmass")
+        //                                          };
+        //}
 
         private BooksMvcContext db = new BooksMvcContext();
         //
         // GET: /Parser/
         public ActionResult Parse()
         {
-            Book tempBook = new Book();
             decimal? TPrice = null;
             string TAuthor = null;
             string TTitle = null;
@@ -32,34 +48,55 @@ namespace BookReview.Controllers
             string TPage_extent = null;
             string TBarcode = null;
             string TSeries = null;
+            int skipCounter = 0;
+            int bookCounter = 0;
 
-            XmlTextReader reader = new XmlTextReader("C:/Users/ream/Desktop/div_book/books.xml");
+            db = new BooksMvcContext();
+            db.Configuration.AutoDetectChangesEnabled = false;
+            db.Configuration.ValidateOnSaveEnabled = false;
+
+            XmlTextReader reader = new XmlTextReader(@"C:\Users\eugene.kulabuhov\Downloads\div_book.xml");
             while (reader.Read())
             {
                 //если это закрывающий оффер тэг, то хуячим это в базу. Делается это как ты заметил по одной записи. 
                 //Можно запихивать кучками, если тебе хочется. Но как по мне то и так довольно быстро.
                 if (reader.NodeType == XmlNodeType.EndElement && reader.Name.ToLower() == "offer")
                 {
+                    var tempBook = new Book
+                    {
+                        Price = TPrice,
+                        Author = TAuthor,
+                        Title = TTitle,
+                        Year = TYear,
+                        Description = TDescription,
+                        OzonBookId = TOzonBookId,
+                        Url = TUrl,
+                        Picture = TPicture,
+                        Publisher = TPublisher,
+                        ISBN = TISBN,
+                        Language = TLanguage,
+                        Binding = TBinding,
+                        Page_extent = TPage_extent,
+                        Barcode = TBarcode,
+                        Series = TSeries
+                    };
 
-                    tempBook.Price = TPrice;
-                    tempBook.Author = TAuthor;
-                    tempBook.Title = TTitle;
-                    tempBook.Year = TYear;
-                    tempBook.Description = TDescription;
-                    tempBook.OzonBookId = TOzonBookId;
-                    tempBook.Url = TUrl;
-                    tempBook.Picture = TPicture;
-                    tempBook.Publisher = TPublisher;
-                    tempBook.ISBN = TISBN;
-                    tempBook.Language = TLanguage;
-                    tempBook.Binding = TBinding;
-                    tempBook.Page_extent = TPage_extent;
-                    tempBook.Barcode = TBarcode;
-                    tempBook.Series = TSeries;
+                    skipCounter++;
 
+                    if (skipCounter > 114067)
+                    {
+                        if (bookCounter == 4000)
+                        {
+                            db.SaveChanges();
+                            db = new BooksMvcContext();
+                            db.Configuration.AutoDetectChangesEnabled = false;
+                            db.Configuration.ValidateOnSaveEnabled = false;
+                            bookCounter = 0;
+                        }
 
-                    db.Books.Add(tempBook);
-                    db.SaveChanges();
+                        db.Books.Add(tempBook);
+                        bookCounter++;
+                    }
                 }
                 else if (reader.NodeType == XmlNodeType.Element)
                 {
@@ -114,7 +151,7 @@ namespace BookReview.Controllers
                 }
             }
 
-
+            db.SaveChanges();
             return View();
         } 
           
