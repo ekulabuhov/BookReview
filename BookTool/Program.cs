@@ -23,24 +23,6 @@ namespace BookTool
             return true;
         }
 
-        static void PostRequestHandler (HttpWebRequest request, HttpWebResponse response)
-        {
-
-        }
-
-        static void VerifyPichas()
-        {
-            var db = new BooksMvcContext();
-            foreach (var author in db.Authors)
-            {
-                if (!File.Exists(@"c:\AuthorPictures\" + author.Picture))
-                {
-                    Debug.WriteLine(@"c:\AuthorPictures\" + author.Picture + " is not found")
-                }
-
-            }
-        }
-
         static void Main(string[] args)
         {
             var db = new BooksMvcContext();
@@ -56,7 +38,6 @@ namespace BookTool
             htmlWeb.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36";
 
             htmlWeb.PreRequest = new HtmlWeb.PreRequestHandler(PreRequestHandler);
-            htmlWeb.PostResponse = new HtmlWeb.PostResponseHandler(PostRequestHandler);
 
             //htmlWeb.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36";
             //var proxy = new System.Net.WebProxy("187.61.117.11", 8080);
