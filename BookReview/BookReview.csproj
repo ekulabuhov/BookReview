@@ -178,15 +178,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201401301322213_fs.cs" />
-    <Compile Include="Migrations\201401301322213_fs.Designer.cs">
-      <DependentUpon>201401301322213_fs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402022116196_unique_bookAspNetUser.cs" />
-    <Compile Include="Migrations\201402022116196_unique_bookAspNetUser.Designer.cs">
-      <DependentUpon>201402022116196_unique_bookAspNetUser.cs</DependentUpon>
+    <Compile Include="Migrations\201402082233087_abc.cs" />
+    <Compile Include="Migrations\201402082233087_abc.Designer.cs">
+      <DependentUpon>201402082233087_abc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Author.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Models\AspNetRole.cs" />
@@ -282,11 +279,8 @@
     <Folder Include="Views\Parser\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201401301322213_fs.resx">
-      <DependentUpon>201401301322213_fs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402022116196_unique_bookAspNetUser.resx">
-      <DependentUpon>201402022116196_unique_bookAspNetUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201402082233087_abc.resx">
+      <DependentUpon>201402082233087_abc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
